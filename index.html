@@ -11,17 +11,81 @@
     <title>Hello, world!</title>
   </head>
   <style>
-    @import url('https://fonts.googleapis.com/css?family=Prompt:400,600&display=swap');    
+    @import url('https://fonts.googleapis.com/css?family=Prompt:400,600&display=swap');
     body {
       background-color: #3a4750;
+      overflow-x: hidden;
     }
     h1, p, a {
       text-align: center;
       font-family: 'Prompt';
-      color: #eeeeee; 
+      color: #eeeeee;
+    }
+    h1 {
+      overflow: hidden;
+    } 
+    P {
+      margin: 10px;
     }
     nav {
       background-color: #303841;
+    }
+    #bemVindo{
+      position: absolute;
+      width: 100vw;      
+      -moz-animation: slide 1s;
+      -o-animation: slide 1s;
+      -webkit-animation: slide 1s;
+      animation: slide 2s; 
+      top: 40% !important;
+    }
+    @keyframes slide {
+      0% {
+        left: 500px;
+        top: 40%;
+        opacity: 0;
+      }
+      100% {
+        left: 0px;
+        top: 40% !important;
+        opacity: 1;
+      }
+    }
+    @-o-keyframes slide {
+      0% {
+        left: 500px;
+        top: 40%;
+        opacity: 0;
+      }
+      100% {
+        left: 0px;
+        top: 40% !important;
+        opacity: 1;
+      }
+    }
+    @-moz-keyframes slide {
+      0% {
+        left: 500px;
+        top: 40%;
+        opacity: 0;
+      }
+      100% {
+        left: 0px;
+        top: 40% !important;
+        opacity: 1;
+      }
+    }
+    @-webkit-keyframes slide {
+      0% {
+        left: 500px;
+        top: 40%;
+        opacity: 0;
+      }
+      100% {
+        left: 0px;
+        top: 40% !important;
+        opacity: 1;
+      }
     }
     .navbar-brand {
       font-size: 40pt;
@@ -32,6 +96,9 @@
     .text-link:hover {
       text-decoration: none;
       color: #eee;
+    }
+    .nav-item {
+      border-bottom: 1px solid #00adb5;
     }
     footer {
       position: absolute;
@@ -51,10 +118,10 @@
             <p>crud</p>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarAbas" aria-controls="navbarAbas" aria-expanded="false" aria-label="Mostra as abas">
-            <span class="navbar-toggle-icon"></span>
+            <span class="navbar-toggle-icon">g</span>
         </button>
         <div class="collapse navbar-collapse w-100 justify-content-md-center" id="navbarAbas">
-            <ul class="navbar-nav w-75 justify-content-md-around align-center">
+            <ul class="navbar-nav w-100 w-lg-75 justify-content-md-around">
               <li class="nav-item active">
                 <a class="nav-link" href="index.php">
                   Início
@@ -84,8 +151,8 @@
     <main>
       <section id="bemVindo">
           <h1 class="h1">B e m - v i n d o</h1>
-          <p>Essa é uma página feita para os estudos na linguagem PHP.</p>
-          <p>Foram ulizadas tecnologias como <a class="text-link" href="https://getbootstrap.com/">Bootstrap</a> e <a class="text-link" href="https://php.net/">JQuery</a> .</p>
+          <p>Essa é uma página feita para os estudos na linguagem <a class="text-link" href="https://php.net/">PHP</a>.</p>
+          <p>Foram ulizadas tecnologias como <a class="text-link" href="https://getbootstrap.com/">Bootstrap</a> e <a class="text-link" href="https://jquery.com/">JQuery</a> .</p>
           <p>A proposta da página é colocar em prática os príncipios do CRUD.</p>
           <p>Sendo assim possível, inserir, alterar, deletar e consultar <a class="text-link" href="?page=alunos">Alunos</a>, <a class="text-link" href="?page=cursos">Cursos</a> e <a class="text-link" href="?page=matriculas">Matriculas</a> .</p>
       </section>
