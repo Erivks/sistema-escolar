@@ -10,6 +10,34 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+    <style>
+        #cadastroCurso {
+            margin: 0 auto;
+            text-align: center;
+            border: 1px solid #00adb5;
+            border-radius: 5px;
+            padding: 20px 0 20px 0;
+            background-color: #303841;
+            width: 25%;
+        }
+        textarea:focus, input:focus, select:focus {
+            box-shadow: 0 0 0 0 !important;
+            border: 0 none !important;
+            outline: 0 !important;
+        } 
+        @media screen and (max-width: 675px){
+            #cadastroCurso {
+                width: 75%;
+            }
+        }
+        #botao {
+            color: #eee;
+            background-color: #00adb5;
+        }
+        label {
+            color: #eee;
+        }
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-light flex-md-column flex-sm-row shadow-sm">
@@ -48,13 +76,20 @@
         </div>
     </nav>
     <main>
-      <section id="bemVindo">
-          <h1 class="h1">B e m - v i n d o</h1>
-          <p>Essa é uma página feita para os estudos na linguagem <a class="text-link" href="https://php.net/">PHP</a>.</p>
-          <p>Foram ulizadas tecnologias como <a class="text-link" href="https://getbootstrap.com/">Bootstrap<sup><img src="Bootstrap-Logo-PNG-715x715.png" alt="Logo do Bootstrap" width="15px"></sup></a> e <a class="text-link" href="https://jquery.com/">JQuery<sup><img src="jquery.png" alt="Logo do JQuery" width="15px"></sup> </a> .</p>
-          <p>A proposta da página é colocar em prática os príncipios do CRUD.</p>
-          <p>Sendo assim possível, inserir, alterar, deletar e consultar <a class="text-link" href="?page=alunos">Alunos</a>, <a class="text-link" href="?page=cursos">Cursos</a> e <a class="text-link" href="?page=matriculas">Matriculas</a> .</p>
-      </section>
+        <section id="cadastroCurso">
+            <h1>Cadastrar curso</h1>
+            <form action="processaCurso.php">
+                <div class="form-group form-row justify-content-center">
+                    <label for="nomeCurso">Nome do curso:</label>
+                    <input class="form-control col-10" type="text" id="nomeCurso" name="nomeCurso" placeholder="Nome do curso">
+                </div>
+                <div class="form-group form-row justify-content-center">
+                    <label for="cargaHorariaCurso">Carga Horária:</label>
+                    <input class="form-control col-10" type="text" id="cargaHorariaCurso" name="cargaHorariaCurso" placeholder="Carga Horária">        
+                </div>
+                <button class="btn col-10" id="botao">Cadastrar</button>
+            </form>
+        </section>
     </main>
 
     <footer class="footer">
