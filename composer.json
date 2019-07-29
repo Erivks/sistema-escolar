@@ -1,0 +1,12 @@
+{
+    "name": "eoliveira/crud-php",
+    "authors": [
+        {
+            "name": "Erivks",
+            "email": "mordecai.es27@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^2.11"
+    }
+}
