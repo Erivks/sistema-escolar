@@ -6,6 +6,7 @@
             "email": "mordecai.es27@gmail.com"
         }
     ],
+    "description": "Projeto crud e mvc para estudo do php",
     "require": {
         "twig/twig": "^2.11"
     }
