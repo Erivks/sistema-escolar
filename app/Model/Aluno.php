@@ -50,8 +50,6 @@
             $queryRequest->bindValue(':id', $alunoID['id'], PDO::PARAM_INT);
             $queryRequest->execute();
 
-            $queryResponse = $queryRequest->fetchObject('Aluno');
-
             if(!$queryResponse){
                 throw new Exception("Não foi possível deletar o aluno");
             }
