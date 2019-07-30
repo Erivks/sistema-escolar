@@ -1,8 +1,14 @@
 <?php
     require_once 'app/Core/Core.php';
     require_once 'app/lib/Database/Connection.php';
+    require_once 'app/lib/Twig/Twig.php';
     require_once 'app/Controller/ErrorController.php';
     require_once 'app/Controller/HomeController.php';
+    require_once 'app/Controller/CursoController.php';
+    require_once 'app/Controller/AlunoController.php';
+    require_once 'app/Controller/MatriculaController.php';
+    require_once 'app/Model/Curso.php';
+    require_once 'app/Model/Matricula.php';
     require_once 'app/Model/Aluno.php';
     require_once 'vendor/autoload.php';
 
