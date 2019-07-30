@@ -1,0 +1,46 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Nome do Curso
+            </th>
+            <th>
+                Carga Horária
+            </th>
+            <th>
+                Editar
+            </th>
+            <th>
+                Deletar
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for curso in cursos %}
+            <tr>
+                <th>
+                    {{curso.id_curso}}
+                </th>
+                <td>
+                    {{curso.nome}}
+                </td>
+                <td>
+                    {{curso.carga_horária}}
+                </td>
+                <td>
+                    <button>
+                        Editar
+                    </button>
+                </td>
+                <td>
+                    <button>
+                        Deletar
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
