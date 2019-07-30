@@ -1,7 +1,7 @@
 <?php
 
     class MatriculaController {
-        public function getAll(){
+        public function index(){
             try {
                 $storeMatriculas = Matricula::getAll();
 
