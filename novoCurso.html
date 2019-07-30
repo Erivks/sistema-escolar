@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/style.css">
 
     <title>Hello, world!</title>
     <style>
-        #cadastroCurso {
-            text-align: center;
-            border: 1px solid #00adb5;
-            border-radius: 5px;
-            padding: 20px 0 20px 0;
-            background-color: #303841;
-            width: 25%;
-            margin: 5em auto 0;
+         #cadastro {
+          text-align: center;
+          border: 1px solid #00adb5;
+          border-radius: 5px;
+          padding: 20px 0 20px 0;
+          background-color: #303841;
+          width: 35%;
+          margin: 5em auto 0;
         }
         h1 {
           font-size: 25px;
@@ -32,8 +32,13 @@
           outline: 0 !important;
         } 
         @media screen and (max-width: 675px){
-          #cadastroCurso {
+          #cadastro {
             width: 75%;
+          }
+        }
+        @media screen and (max-width: 375px){
+          #cadastro {
+            width: 95%;
           }
         }
         #botao {
@@ -79,7 +84,7 @@
         </div>
     </nav>
     <main>
-        <section id="cadastroCurso">
+        <section id="cadastro">
             <h1>Cadastrar curso</h1>
             <form action="processaCurso.php">
                 <div class="form-group form-row justify-content-center">
