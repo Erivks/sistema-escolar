@@ -1,19 +1,19 @@
-<table class="table">
+<table class="table table-hover table-striped table-dark">
     <thead>
         <tr>
-            <th>
+            <th scope="col">
                 ID
             </th>
-            <th>
+            <th scope="col">
                 Nome do Curso
             </th>
-            <th>
+            <th scope="col">
                 Carga Horária
             </th>
-            <th>
+            <th scope="col">
                 Editar
             </th>
-            <th>
+            <th scope="col">
                 Deletar
             </th>
         </tr>
@@ -21,7 +21,7 @@
     <tbody>
         {% for curso in cursos %}
             <tr>
-                <th>
+                <th scope="row">
                     {{curso.id_curso}}
                 </th>
                 <td>
@@ -31,14 +31,14 @@
                     {{curso.carga_horária}}
                 </td>
                 <td>
-                    <button>
+                    <a href="?page=curso&alter={{curso.id}}" role="button">
                         Editar
-                    </button>
+                    </a>
                 </td>
                 <td>
-                    <button>
+                    <a href="?page=curso&delete={{curso.id}}" role="button"> 
                         Deletar
-                    </button>
+                    </a>
                 </td>
             </tr>
         {% endfor %}
