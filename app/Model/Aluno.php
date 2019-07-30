@@ -27,15 +27,33 @@
 
             $conn = ConnectionToDB::getConnection();
 
-            $queryRequest = "SELECT * FROM Alunos :id";
+            $queryRequest = "SELECT * FROM Alunos WHERE id_aluno = :id";
             $queryRequest = $conn->prepare($queryRequest);
-            $queryRequest->bindValue(':id', $alunoID, PDO::PARAM_INT);
+            $queryRequest->bindValue(':id', $alunoID['id'], PDO::PARAM_INT);
             $queryRequest->execute();
 
             $queryResponse = $queryRequest->fetchObject('Aluno');
 
             if(!$queryResponse){
                 throw new Exception("Não foi possível encontrar nenhum registro de aluno no banco");
+            }
+
+            return $queryResponse;
+        }
+
+        public static function deleteByID($alunoID){
+
+            $conn = ConnectionToDB::getConnection();
+
+            $queryRequest = "DELETE FROM Alunos WHERE id_aluno = :id";
+            $queryRequest = $conn->prepare($queryRequest);
+            $queryRequest->bindValue(':id', $alunoID['id'], PDO::PARAM_INT);
+            $queryRequest->execute();
+
+            $queryResponse = $queryRequest->fetchObject('Aluno');
+
+            if(!$queryResponse){
+                throw new Exception("Não foi possível deletar o aluno");
             }
 
             return $queryResponse;
