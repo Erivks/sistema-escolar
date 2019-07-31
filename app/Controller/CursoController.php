@@ -6,9 +6,7 @@
             try {
                 $storeCursos = Curso::getAll();
 
-                $loader = new \Twig\Loader\FilesystemLoader('app/View');
-                $twig = new \Twig\Environment($loader);
-                
+                $twig = Twig::loadTwig();
                 $template = $twig->load('curso.html');
                 
                 $params = array();
