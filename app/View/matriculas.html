@@ -1,14 +1,14 @@
-<table class="table">
+<table class="table table-striped table-dark table-hover">
     <thead>
         <tr>
             <th scope="col">
                 ID
             </th>
             <th scope="col">
-                Nome do aluno
+                Aluno
             </th>
             <th scope="col">
-                Nome do curso
+                Curso
             </th>
             <th scope="col">
                 Editar
@@ -19,7 +19,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for matrciula in matriculas %}
+        {% for matricula in matriculas %}
             <tr>
                 <th scope="row">
                     {{matricula.id_matricula}}

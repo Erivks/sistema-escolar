@@ -6,17 +6,17 @@
 
             $conn = ConnectionToDB::getConnection();
 
-            $queryRequest = "SELECT id_aluno_curso, a.nome as 'nome_aluno', c.nome as 'nome_curso' 
-                            FROM Alunos_Cursos as ac
-                            INNER JOIN Alunos as a on a.id_aluno = ac.id_aluno
-                            INNER JOIN Cursos as c on c.id_curso = ac.id_curso";
+            $queryRequest = "SELECT id_matricula, a.nome_aluno as 'nome_aluno', c.nome_curso as 'nome_curso' 
+                            FROM Matriculas as m
+                            INNER JOIN Alunos as a on a.id_aluno = m.id_aluno
+                            INNER JOIN Cursos as c on c.id_curso = m.id_curso";
             $queryRequest = $conn->prepare($queryRequest);
-            $queryRequest-execute();
+            $queryRequest->execute();
 
             $queryResponse = array();
 
-            foreach ($queryRequest->fetchObject('Matricula') as $row) {
-                $queryResponse = $row;
+            while ($row = $queryRequest->fetchObject('Matricula')) {
+                $queryResponse[] = $row;
             }
 
             if(!$queryResponse){

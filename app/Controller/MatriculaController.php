@@ -5,13 +5,14 @@
             try {
                 
                 $storeMatriculas = Matricula::getAll();
+                
                 $twig = Twig::loadTwig();
                 $template = $twig->load('matriculas.html');
 
                 $matriculas = array();
                 $matriculas['matriculas'] = $storeMatriculas;
 
-                echo $template->render($matriculas['matriculas']);
+                echo $template->render(array('matriculas' => $matriculas['matriculas']));
                 
             } catch (Exception $e) {
                 echo $e->getMessage();
