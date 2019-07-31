@@ -21,7 +21,7 @@
 
         public function deleteData($cursoID){
             try {
-                Curso::deleteByID($cursoID['id']);
+                Curso::deleteByID($cursoID);
                 $this->index();
             } catch (Exception $error) {
                 echo $error->getMessage();

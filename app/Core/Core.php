@@ -15,14 +15,14 @@
             if(isset($_GET['alter'])){
 
                 $action = 'alterData';
-                $id = $_GET['editar'];
+                $id = $_GET['alter'];
                 call_user_func_array(array(new $page, $action), array('id' => $id));
             
             } elseif(isset($_GET['delete'])){
             
                 $action = 'deleteData';
-                $id = $_GET['deletar'];
-                call_user_func_array(array(new $page, $action), array('id' => $id));
+                $id = $_GET['delete'];
+                call_user_func_array(array(new $page, $action), array('ID' => $id));
             
             } else {
             
