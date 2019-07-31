@@ -9,10 +9,10 @@
                 $twig = Twig::loadTwig();
                 $template = $twig->load('curso.html');
                 
-                $params = array();
-                $params['cursos'] = $storeCursos;
+                $cursos = array();
+                $cursos['cursos'] = $storeCursos;
 
-                $content = $template->render($params);    
+                $content = $template->render($cursos['cursos']);    
                 echo $content;
             } catch (Exception $e) {
                 echo $e->getMessage();
@@ -20,7 +20,12 @@
         }
 
         public function deleteData($cursoID){
-            Curso::
+            try {
+                Curso::deleteByID($cursoID['id']);
+                $this->index();
+            } catch (Exception $error) {
+                echo $error->getMessage();
+            }
         }
     }
 
