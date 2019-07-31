@@ -25,6 +25,21 @@
 
             return $queryResponse;
         }
+        public static function deleteByID($matriculaID){
+            
+            $conn = ConnectionToDB::getConnection();
+
+            $queryRequest = "DELETE FROM Matriculas WHERE id_matricula = :id";
+            $queryRequest = $conn->prepare($queryRequest);
+            $queryRequest->bindValue(':id', $matriculaID['id'], PDO::PARAM_INT);
+            $queryResponse = $queryRequest->execute();
+
+            if($queryResponse == false) {
+                throw new Exception("Não foi possivel deletar a matriculas");
+            }
+
+            return $queryResponse;
+        }
     }
 
 

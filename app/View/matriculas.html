@@ -1,0 +1,46 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                ID
+            </th>
+            <th scope="col">
+                Nome do aluno
+            </th>
+            <th scope="col">
+                Nome do curso
+            </th>
+            <th scope="col">
+                Editar
+            </th>
+            <th scope="col">
+                Deletar
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for matrciula in matriculas %}
+            <tr>
+                <th scope="row">
+                    {{matricula.id_matricula}}
+                </th>
+                <td>
+                    {{matricula.nome_aluno}}
+                </td>
+                <td>
+                    {{matricula.nome_curso}}
+                </td>
+                <td>
+                    <button class="btn btn-primary">
+                        Editar
+                    </button>
+                </td>
+                <td>
+                    <a href="?page=matricula&delete={{matricula.id_matricula}}" class="btn btn-primary" role="button">
+                        Deletar
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
