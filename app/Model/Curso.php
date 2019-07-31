@@ -6,14 +6,13 @@
             //Fazendo a conexão
             $conn = ConnectionToDB::getConnection();
 
-            $queryRequest = 'SELECT * FROM Cursos';
+            $queryRequest = "SELECT * FROM cursos";
             $queryRequest = $conn->prepare($queryRequest);
             $queryRequest->execute();
-
             $queryResponse = array();
 
-            foreach ($queryRequest->fetchObject('Curso') as $row) {
-                $queryResponse = $row;
+            while ($row = $queryRequest->fetchObject('Curso')) {
+                $queryResponse[] = $row;
             }
 
             if(!$queryResponse){

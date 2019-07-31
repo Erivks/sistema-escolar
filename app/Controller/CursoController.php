@@ -7,12 +7,12 @@
                 $storeCursos = Curso::getAll();
 
                 $twig = Twig::loadTwig();
-                $template = $twig->load('curso.html');
+                $template = $twig->load('cursos.html');
                 
                 $cursos = array();
                 $cursos['cursos'] = $storeCursos;
 
-                $content = $template->render($cursos['cursos']);    
+                $content = $template->render(array('cursos' => $cursos['cursos']));    
                 echo $content;
             } catch (Exception $e) {
                 echo $e->getMessage();
