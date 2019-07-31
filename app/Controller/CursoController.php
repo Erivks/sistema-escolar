@@ -18,6 +18,10 @@
                 echo $e->getMessage();
             }
         }
+
+        public function deleteData($cursoID){
+            Curso::
+        }
     }
 
 ?>

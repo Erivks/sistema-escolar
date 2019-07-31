@@ -22,6 +22,21 @@
 
             return $queryResponse;
         }
+        public static function deleteByID($cursoID){
+
+            $conn = ConnectionToDB::getConnection();
+
+            try {
+                $queryRequest = "DELETE FROM Cursos WHERE id_curso = :id";
+                $queryRequest = $conn->prepare($queryRequest);
+                $queryRequest->bindValue(':id', $cursoID, PDO::PARAM_INT);
+                $queryRequest->execute();
+            } catch (Exception $error) {
+                
+            }
+            
+
+        }
     }
 
 
