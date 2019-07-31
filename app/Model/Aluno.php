@@ -48,9 +48,9 @@
             $queryRequest = "DELETE FROM Alunos WHERE id_aluno = :id";
             $queryRequest = $conn->prepare($queryRequest);
             $queryRequest->bindValue(':id', $alunoID['id'], PDO::PARAM_INT);
-            $queryRequest->execute();
+            $queryResponse = $queryRequest->execute();
 
-            if(!$queryResponse){
+            if($queryResponse == false){
                 throw new Exception("Não foi possível deletar o aluno");
             }
 

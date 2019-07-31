@@ -1,0 +1,46 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                ID
+            </th>
+            <th scope="col">
+                Nome
+            </th>
+            <th scope="col">
+                Data de nascimento
+            </th>
+            <th scope="col">
+                Editar
+            </th>
+            <th scope="col">
+                Deletar
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for aluno in alunos %}
+            <tr>
+                <th scope="row">
+                    {{ aluno.id_aluno }}
+                </th>
+                <td>    
+                    {{ aluno.nome }}
+                </td>
+                <td>
+                    {{ aluno.data_nascimento }}
+                </td>
+                <td>
+                    <button class="btn btn-primary">
+                        Editar
+                    </button>
+                </td>
+                <td>
+                    <a href="" class="btn btn-primary" role="button">
+                        Deletar
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
