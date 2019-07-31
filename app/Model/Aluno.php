@@ -6,14 +6,14 @@
             $conn = ConnectionToDB::getConnection();
             
             //Fazendo consulta
-            $queryRequest = 'SELECT * FROM Alunos';
+            $queryRequest = 'SELECT * FROM alunos';
             $queryRequest = $conn->prepare($queryRequest); //Preparando consulta
             $queryRequest->execute(); //Realizando consulta
 
             $queryResponse = array();
 
-            foreach ($queryRequest->fetchObject('Aluno') as $row) {
-                $queryResponse = $row;
+            while ($row = $queryRequest->fetchObject('Aluno')) {
+                $queryResponse[] = $row;
             }
 
             if(!$queryResponse){

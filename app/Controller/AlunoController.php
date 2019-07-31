@@ -15,7 +15,7 @@
                 $alunos['alunos'] = $storeAlunos;
 
                 //Renderizando template
-                echo $template->render($alunos['alunos']);
+                echo $template->render(array('alunos' => $alunos['alunos']));
             
             } catch (Exception $error) {
                 echo $error->getMessage();
