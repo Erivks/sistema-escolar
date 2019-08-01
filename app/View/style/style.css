@@ -11,7 +11,7 @@ h1, p, a, button {
 h1 {
   overflow: hidden;
 } 
-P {
+p {
   margin: 10px;
 }
 nav {
@@ -80,6 +80,13 @@ nav {
 .text-link {
   border-bottom: 1px solid #00adb5;
   color: #eee;
+}
+th, td {
+  text-align: center !important;
+}
+.btn {
+  background-color: #00adb5 !important;
+  border-color: #70b7bb !important;
 }
 .text-link:hover {
   text-decoration: none;
