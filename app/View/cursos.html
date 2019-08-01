@@ -31,7 +31,7 @@
                     {{curso.carga_horaria}}
                 </td>
                 <td>
-                    <button class="btn btn-primary">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarCurso" data-name="{{curso.nome_curso}}" data-workload="{{curso.carga_horaria}}">
                         Editar
                     </button>
                 </td>
@@ -44,3 +44,30 @@
         {% endfor %}
     </tbody>
 </table>
+<div class="modal fade" id="editarCurso" tabindex="-1" role="diálogo" aria-labelledby="Janela para editar curso" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Edita curso</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <label class="col-form-label" for="courseNameInput">Nome:</label>
+                        <input class="form-control" type="text" id="courseNameInput">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" for="courseWorkloadInput">Carga Horária</label>
+                        <input class="form-control" type="text" id="courseWorkloadInput">
+                    </div>
+                    <button class="btn btn-primary" type="submit" data-dismiss="modal">
+                        Editar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

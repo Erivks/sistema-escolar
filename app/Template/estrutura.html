@@ -73,7 +73,16 @@
         var modal = $(this);
         modal.find('#nameInput').val(name);
         modal.find('#birthdayInput').val(birthday);
-      })
+      });
+      $('#editarCurso').on('show.bs.modal', function(event){
+        var button = $(event.relatedTarget);
+        var name = button.data('name');
+        var workload = button.data('workload');
+        
+        var modal = $(this);
+        modal.find('#courseNameInput').val(name);
+        modal.find('#courseWorkloadInput').val(workload);
+      });
     </script>
   </body>
 </html>
