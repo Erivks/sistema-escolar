@@ -27,7 +27,7 @@
 
             $queryRequest = "DELETE FROM Cursos WHERE id_curso = :id";
             $queryRequest = $conn->prepare($queryRequest);
-            $queryRequest->bindValue(':id', $cursoID['ID'], PDO::PARAM_INT);
+            $queryRequest->bindValue(':id', $cursoID, PDO::PARAM_INT);
             $queryRequest->execute();
            
             
