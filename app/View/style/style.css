@@ -3,8 +3,8 @@ body {
   background-color: #3a4750 !important;
   overflow-x: hidden;
 }
-h1, p, a {
-  font-family: 'Prompt';
+h1, p, a, button {
+  font-family: 'Prompt' !important;
   text-align: center;
   color: #eeeeee;
 }
