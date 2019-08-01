@@ -23,7 +23,7 @@
         }
         public function deleteData($alunoID){
             try {
-                Aluno::deleteByID($alunoID['id']);
+                Aluno::deleteByID($alunoID);
                 $this->index();
             } catch(Exception $error){
                 echo $error->getMessage();

@@ -47,7 +47,7 @@
 
             $queryRequest = "DELETE FROM Alunos WHERE id_aluno = :id";
             $queryRequest = $conn->prepare($queryRequest);
-            $queryRequest->bindValue(':id', $alunoID['id'], PDO::PARAM_INT);
+            $queryRequest->bindValue(':id', $alunoID, PDO::PARAM_INT);
             $queryResponse = $queryRequest->execute();
 
             if($queryResponse == false){
