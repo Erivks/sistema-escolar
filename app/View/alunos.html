@@ -31,7 +31,7 @@
                     {{aluno.data_nascimento}}
                 </td>
                 <td>
-                    <button class="btn btn-primary">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarAluno" data-name="{{aluno.nome_aluno}}" data-birthday="{{aluno.data_nascimento}}">
                         Editar
                     </button>
                 </td>
@@ -44,3 +44,32 @@
         {% endfor %}
     </tbody>
 </table>
+<div class="modal fade" id="editarAluno" tabindex="-1" role="diálogo" aria-labelledby="Janela para editar aluno" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Edite o aluno</h2>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <label class="col-form-label" for="nameInput">Nome:</label>
+                        <input class="form-control" type="text" name="nameInput" id="nameInput">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" for="birthdayInput">Data de nascimento:</label>
+                        <input class="form-control" type="text" name="birthdayInput" id="birthdayInput">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">
+                    Editar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
