@@ -31,7 +31,7 @@
 
             $queryRequest = "DELETE FROM Matriculas WHERE id_matricula = :id";
             $queryRequest = $conn->prepare($queryRequest);
-            $queryRequest->bindValue(':id', $matriculaID['id'], PDO::PARAM_INT);
+            $queryRequest->bindValue(':id', $matriculaID, PDO::PARAM_INT);
             $queryResponse = $queryRequest->execute();
 
             if($queryResponse == false) {

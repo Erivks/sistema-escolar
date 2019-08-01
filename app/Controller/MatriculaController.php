@@ -20,7 +20,7 @@
         }
         public function deleteData($matriculaID){
             try {
-                Matricula::deleteByID($matriculaID['id']);
+                Matricula::deleteByID($matriculaID);
                 $this->index();
             } catch (Exception $error) {
                 echo $error->getMessage();
