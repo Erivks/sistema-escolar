@@ -28,8 +28,13 @@
             $queryRequest = "DELETE FROM Cursos WHERE id_curso = :id";
             $queryRequest = $conn->prepare($queryRequest);
             $queryRequest->bindValue(':id', $cursoID, PDO::PARAM_INT);
-            $queryRequest->execute();
-           
+            $queryResponse = $queryRequest->execute();
+            
+            if($queryResponse == false){
+                throw new Exception("Não foi possível deletar o o curso");
+            }
+
+            return $queryResponse;
             
 
         }
