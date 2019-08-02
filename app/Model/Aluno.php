@@ -6,7 +6,7 @@
             $conn = ConnectionToDB::getConnection();
             
             //Fazendo consulta
-            $queryRequest = 'SELECT * FROM alunos';
+            $queryRequest = "SELECT id_aluno, nome_aluno, DATE_FORMAT(data_nascimento, '%d/%m/%Y') as 'data_nascimento' FROM alunos";
             $queryRequest = $conn->prepare($queryRequest); //Preparando consulta
             $queryRequest->execute(); //Realizando consulta
 
