@@ -29,6 +29,24 @@
                 echo $error->getMessage();
             }
         }
+        public function alterData(){
+            try {
+                $studentID = $_POST['idInput'];
+                $studentName = $_POST['nameInput'];
+                $studentBirthday = $_POST['birthdayInput'];
+                
+                if(isset($_POST['idInput'])){
+                    $studentDataset = array('id' => $studentID, 
+                                        'name' => $studentName,
+                                        'birthday' => $studentBirthday);
+                
+                    Aluno::alterStudent($studentDataset);
+                    $this->index();
+                }
+            } catch(Exception $error){
+                echo $error->getMessage();
+            }
+        }
     }
 
 ?>

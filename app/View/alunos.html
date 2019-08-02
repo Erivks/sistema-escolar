@@ -31,7 +31,7 @@
                     {{aluno.data_nascimento}}
                 </td>
                 <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarAluno" data-name="{{aluno.nome_aluno}}" data-birthday="{{aluno.data_nascimento}}">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarAluno" data-id="{{aluno.id_aluno}}" data-name="{{aluno.nome_aluno}}" data-birthday="{{aluno.data_nascimento}}">
                         Editar
                     </button>
                 </td>
@@ -54,7 +54,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="POST">
+                <form action="app/Core/Core.php" method="POST">
+                    <div class="form-group">
+                        <label for="col-form-label">ID:</label>
+                        <input class="form-control" type="text" name="idInput" id="idInput" disabled>
+                    </div>
                     <div class="form-group">
                         <label class="col-form-label" for="nameInput">Nome:</label>
                         <input class="form-control" type="text" name="nameInput" id="nameInput">
@@ -63,9 +67,8 @@
                         <label class="col-form-label" for="birthdayInput">Data de nascimento:</label>
                         <input class="form-control date" type="text" name="birthdayInput" id="birthdayInput">
                     </div>
-                    <button type="submit" class="btn btn-primary" data-dismiss="modal">
-                            Editar
-                    </button>
+                    <input type="submit" class="btn btn-primary" data-dismiss="modal" value="Editar">
+                    </input>
                 </form>
             </div>
         </div>

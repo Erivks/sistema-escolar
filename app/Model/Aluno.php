@@ -56,6 +56,31 @@
 
             return $queryResponse;
         }
+        public static function alterData($studentDataset){
+
+            $conn = ConnectionToDB::getConnection();
+            var_dump($studentDataset);
+            $id = $studentDataset['id'];
+            $name = $studentDataset['name'];
+            $birthday = DateTime::createFromFormat('d/m/Y', $studentDataset['birthday']);
+            $birthday = $date->format('Y-m-d');
+
+            $queryRequest = 'UPDATE Alunos SET nome_aluno = ":name", data_nascimento = ":birthday"
+                            WHERE id_aluno = ":id"';
+
+            $queryRequest = $conn->prepare($queryRequest);
+            $queryRequest->bindValue(':name', $name, PDO::PARAM_STR);
+            $queryRequest->bindValue(':birthday', $birthday, PDO::PARAM_STR);
+            $queryRequest->bindValue(':id', $id, PDO::PARAM_INT);
+
+            $queryResponse = $queryRequest->execute();
+
+            if (!$queryResponse) {
+                throw new Exception("Não foi possível editar o aluno.");
+            }
+
+            return $queryResponse;
+        }
     }
 
 ?>
