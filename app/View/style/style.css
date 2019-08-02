@@ -106,3 +106,17 @@ footer {
   line-height: 2.5em;
   margin: 0;
 }
+.modal-content {
+  border: 1px solid #303841 !important;
+  background-color: #303841 !important;
+}
+.modal-header {
+  background-color: #303841 !important;
+  border-bottom: 1px solid #eee !important;
+}
+.modal-title, label {
+  color: #eee !important;
+}
+.modal-body {
+  background-color: #3a4750 !important;
+}
