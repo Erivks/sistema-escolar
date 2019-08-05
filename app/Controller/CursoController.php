@@ -22,7 +22,25 @@
         public function deleteData($cursoID){
             try {
                 Curso::deleteByID($cursoID);
-                $this->index();
+                header('location:?page=curso');
+            } catch (Exception $error) {
+                echo $error->getMessage();
+            }
+        }
+
+        public function alterData(){
+            try {
+                $courseID = $_POST['idInput'];
+                $courseName = $_POST['nameInput'];
+                $courseWorkload = $_POST['workloadInput'];
+
+                $courseDataset = array(
+                    'id' => $courseID,
+                    'name' => $courseName,
+                    'workload' => $courseWorkload
+                );
+                $queryResponse = Curso::alterData($courseDataset);
+                header('location:?page=curso');
             } catch (Exception $error) {
                 echo $error->getMessage();
             }

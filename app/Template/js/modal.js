@@ -14,10 +14,12 @@ $('#editarAluno').on('show.bs.modal', function(event) {
 });
 $('#editarCurso').on('show.bs.modal', function(event){
     var button = $(event.relatedTarget);
+    var id = button.data('id');
     var name = button.data('name');
     var workload = button.data('workload');
     
     var modal = $(this);
-    modal.find('#courseNameInput').val(name);
-    modal.find('#courseWorkloadInput').val(workload);
+    modal.find('#idInput').val(id);
+    modal.find('#nameInput').val(name);
+    modal.find('#workloadInput').val(workload);
 });

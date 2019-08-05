@@ -31,7 +31,7 @@
                     {{curso.carga_horaria}}
                 </td>
                 <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarCurso" data-name="{{curso.nome_curso}}" data-workload="{{curso.carga_horaria}}">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarCurso" data-id="{{curso.id_curso}}" data-name="{{curso.nome_curso}}" data-workload="{{curso.carga_horaria}}">
                         Editar
                     </button>
                 </td>
@@ -54,18 +54,17 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="POST">
+                <form action="?page=curso&method=alter" method="POST">
+                    <input class="form-control" type="text" hidden name="idInput" id="idInput">
                     <div class="form-group">
-                        <label class="col-form-label" for="courseNameInput">Nome:</label>
-                        <input class="form-control" type="text" id="courseNameInput">
+                        <label class="col-form-label" for="nameInput">Nome:</label>
+                        <input class="form-control" type="text" name="nameInput" id="nameInput">
                     </div>
                     <div class="form-group">
-                        <label class="col-form-label" for="courseWorkloadInput">Carga Horária</label>
-                        <input class="form-control" type="text" id="courseWorkloadInput">
+                        <label class="col-form-label" for="workloadInput">Carga Horária</label>
+                        <input class="form-control" type="text" name="workloadInput" id="workloadInput">
                     </div>
-                    <button class="btn btn-primary" type="submit" data-dismiss="modal">
-                        Editar
-                    </button>
+                    <input type="submit" class="btn btn-primary" value="Editar"></input>
                 </form>
             </div>
         </div>
