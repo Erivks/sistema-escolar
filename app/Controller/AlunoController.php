@@ -48,6 +48,24 @@
                 echo $error->getMessage();
             }
         }
+        public function insertData(){
+            try {
+                
+                $studentName = $_POST['nameInput'];
+                $studentBirthday = $_POST['birthdayInput'];
+                $studentBirthday = DateTime::createFromFormat('d/m/Y', $studentBirthday);
+                $studentBirthday = $studentBirthday->format('Y-m-d');
+                $studentDataset = array(
+                    'name' => $studentName,
+                    'birthday' => $studentBirthday
+                );
+
+                $queryResponse = Aluno::insertData($studentDataset);
+                header('location:?page=aluno');
+            } catch (Exception $error) {
+                echo $error->getMessage();
+            }
+        }
     }
 
 ?>

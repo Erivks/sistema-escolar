@@ -80,6 +80,26 @@
 
             return $queryResponse;
         }
+        public static function insertData($studentDataset){
+
+            $conn = ConnectionToDB::getConnection();
+
+            $name = $studentDataset['name'];
+            $birthday = $studentDataset['birthday'];
+            $queryRequest = 'INSERT INTO Alunos (nome_aluno, data_nascimento) 
+                            VALUES 
+                            (:name, :birthday)';
+            $queryRequest = $conn->prepare($queryRequest);
+            $queryRequest->bindValue(':name', $name, PDO::PARAM_STR);
+            $queryRequest->bindValue(':birthday', $birthday, PDO::PARAM_STR);
+            $queryResponse = $queryRequest->execute();
+
+            if(!$queryResponse){
+                throw new Exception("Não foi possível inserir o aluno.");
+            }
+
+            return $queryResponse;
+        }
     }
 
 ?>

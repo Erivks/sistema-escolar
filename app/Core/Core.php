@@ -19,6 +19,7 @@
                         break;
                     case 'insert':
                         $action = 'insertData';
+                        call_user_func_array(array(new $page, $action), array());
                         break;
                 }
             
