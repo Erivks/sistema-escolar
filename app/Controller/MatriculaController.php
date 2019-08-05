@@ -5,14 +5,25 @@
             try {
                 
                 $storeMatriculas = Matricula::getAll();
-                
+                $storeAlunos = Aluno::getAll();
+                $storeCursos = Curso::getAll();
+
                 $twig = Twig::loadTwig();
                 $template = $twig->load('matriculas.html');
 
                 $matriculas = array();
-                $matriculas['matriculas'] = $storeMatriculas;
+                $cursos = array();
+                $alunos = array();
 
-                echo $template->render(array('matriculas' => $matriculas['matriculas']));
+                $matriculas['matriculas'] = $storeMatriculas;
+                $cursos['cursos'] = $storeCursos;
+                $alunos['alunos'] = $storeAlunos;
+
+                echo $template->render(array(
+                    'matriculas' => $matriculas['matriculas'],
+                    'cursos' => $cursos['cursos'],
+                    'alunos' => $alunos['alunos']
+                ));
                 
             } catch (Exception $e) {
                 echo $e->getMessage();
@@ -22,6 +33,24 @@
             try {
                 Matricula::deleteByID($matriculaID);
                 $this->index();
+            } catch (Exception $error) {
+                echo $error->getMessage();
+            }
+        }
+        public function alterData(){
+            try {
+                $registrationID = $_POST['idInput'];
+                $studentID = $_POST['studentNameInput'];
+                $courseID = $_POST['courseNameInput'];
+
+                $registrationDataset = array(
+                    'registrationID' => $registrationID,
+                    'studentID' => $studentID,
+                    'courseID' => $courseID
+                );
+
+                $queryStudent = Matricula::alterData($registrationDataset);
+                header('location:?page=matricula');
             } catch (Exception $error) {
                 echo $error->getMessage();
             }

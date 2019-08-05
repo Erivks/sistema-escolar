@@ -31,7 +31,7 @@
                     {{matricula.nome_curso}}
                 </td>
                 <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarMatricula" data-student="{{matricula.nome_aluno}}" data-course="{{matricula.nome_curso}}">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarMatricula" data-registration="{{matricula.id_matricula}}" data-student="{{matricula.id_aluno}}" data-course="{{matricula.id_curso}}">
                         Editar
                     </button>
                 </td>
@@ -54,26 +54,26 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="POST">
+                <form action="?page=matricula&method=alter" method="POST">
+                    <input class="form-control" type="text" hidden name="idInput" id="idInput">
                     <div class="form-group">
                         <label class="col-form-label" for="studentNameInput">Aluno:</label>
                         <select class="custom-select" name="studentNameInput" id="studentNameInput">
-                            {% for matricula in matriculas %}
-                                <option value="{{matricula.id_aluno}}">{{matricula.nome_aluno}}</option>
+                            {% for aluno in alunos %}
+                                <option value="{{aluno.id_aluno}}">{{aluno.nome_aluno}}</option>
                             {% endfor %}
                         </select>
                     </div>
                     <div class="form-group">
                         <label class="col-form-label" for="courseNameInput">Curso:</label>
                         <select class="custom-select" name="courseNameInput" id="courseNameInput">
-                            {% for matricula in matriculas %}
-                                <option value="{{matricula.id_curso}}">{{matricula.nome_curso}}</option>
+                            {% for curso in cursos %}
+                                <option value="{{curso.id_curso}}">{{curso.nome_curso}}</option>
                             {% endfor %}
                         </select>
                     </div>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">
-                        Editar
-                    </button>
+                    <input type="submit" class="btn btn-primary" value="Editar">
+                    </input>
                 </form>
             </div>
         </div>

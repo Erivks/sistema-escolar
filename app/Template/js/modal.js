@@ -23,3 +23,16 @@ $('#editarCurso').on('show.bs.modal', function(event){
     modal.find('#nameInput').val(name);
     modal.find('#workloadInput').val(workload);
 });
+
+$('#editarMatricula').on('show.bs.modal', function(event){
+    var button = $(event.relatedTarget);
+    var registration = button.data('registration');
+    var student = button.data('student');
+    var course = button.data('course');
+
+    var modal = $(this);
+    
+    modal.find('#idInput').val(registration);
+    modal.find('#studentNameInput').val(student).prop('selected', true);
+    modal.find('#courseNameInput').val(course).prop('selected', true);
+});
