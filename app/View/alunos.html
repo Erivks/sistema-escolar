@@ -54,11 +54,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="app/Core/Core.php" method="POST">
-                    <div class="form-group">
-                        <label for="col-form-label">ID:</label>
-                        <input class="form-control" type="text" name="idInput" id="idInput" disabled>
-                    </div>
+                <form action="?page=aluno&method=alter" method="POST">
+                    <input class="form-control" type="text" hidden name="idInput" id="idInput">
                     <div class="form-group">
                         <label class="col-form-label" for="nameInput">Nome:</label>
                         <input class="form-control" type="text" name="nameInput" id="nameInput">
@@ -67,7 +64,7 @@
                         <label class="col-form-label" for="birthdayInput">Data de nascimento:</label>
                         <input class="form-control date" type="text" name="birthdayInput" id="birthdayInput">
                     </div>
-                    <input type="submit" class="btn btn-primary" data-dismiss="modal" value="Editar">
+                    <input type="submit" class="btn btn-primary" value="Editar">
                     </input>
                 </form>
             </div>
