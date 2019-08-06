@@ -96,14 +96,12 @@ th, td {
   border-bottom: 1px solid #00adb5;
 }
 footer {
-  position: absolute;
-  bottom: 0;
+  position: relative;
   width: 100%;
   height: 2.5em;
   background-color: #303841;
 }
 .footer-text {
-  line-height: 2.5em;
   margin: 0;
 }
 .modal-content {
