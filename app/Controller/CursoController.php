@@ -45,6 +45,23 @@
                 echo $error->getMessage();
             }
         }
+
+        public function insertData(){
+            try {
+                $courseName = $_POST['nameInput'];
+                $courseWorkload = $_POST['workloadInput'];
+
+                $courseDataset = array(
+                    'name' => $courseName,
+                    'workload' => $courseWorkload
+                );
+
+                $queryResponse = Curso::insertData($courseDataset);
+                header('location:?page=curso');
+            } catch (Exception $error) {
+                echo $error->getMessage();
+            }
+        }
     }
 
 ?>
