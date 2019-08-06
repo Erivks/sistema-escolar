@@ -67,18 +67,18 @@
             $conn = ConnectionToDB::getConnection();
 
             $courseName = $courseDataset['name'];
-            $courseWorkload = $courseWorkload['workload'];
-
-            $queryRequest = "INSERT INTO Cursos (nome_curso, carga_horaria) 
+            $courseWorkload = $courseDataset['workload'];
+            
+            $queryRequest = 'INSERT INTO Cursos (nome_curso, carga_horaria) 
                             VALUES
-                            (:name, :workload)";
+                            (:name, :workload)';
             $queryRequest = $conn->prepare($queryRequest);
             $queryRequest->bindValue(':name', $courseName, PDO::PARAM_STR);
             $queryRequest->bindValue(':workload', $courseWorkload, PDO::PARAM_INT);
             $queryResponse = $queryRequest->execute();
 
             if(!$queryResponse){
-                throw new Exception("Não foi possível inserir o aluno");
+                throw new Exception("Não foi possível inserir o curso");
             }
 
             return $queryResponse;
