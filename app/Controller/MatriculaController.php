@@ -55,5 +55,21 @@
                 echo $error->getMessage();
             }
         }
+        public function insertData(){
+            try {
+                $studentID = $_POST['studentNameInput'];
+                $courseID = $_POST['courseNameInput'];
+
+                $registrationDataset = array(
+                    'studentID' => $studentID,
+                    'courseID' => $courseID
+                );
+
+                $queryStudent = Matricula::insertData($registrationDataset);
+                header('location:?page=matricula');
+            } catch (Exception $error) {
+                echo $error->getMessage();
+            }
+        }
     }
 ?>
