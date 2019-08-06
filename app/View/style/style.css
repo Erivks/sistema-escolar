@@ -94,6 +94,8 @@ th, td {
 }
 .nav-link {
   border-bottom: 1px solid #00adb5;
+  color: #eee !important;
+  text-align: right;
 }
 footer {
   position: relative;
@@ -117,4 +119,14 @@ footer {
 }
 .modal-body {
   background-color: #3a4750 !important;
+}
+.inserirBtn {
+  margin: 15px 5px;
+}
+#DataTables_Table_0_info {
+  color: #eee;
+}
+.pagination .page-item.active .page-link {
+  background-color: #00adb5;
+  border-color: #70b7bb;
 }
