@@ -10,9 +10,15 @@
                 $teachers = array();
                 $teachers['teachers'] = $storeTeacher;
 
-                echo $template->render(array('teachers' => $teachers['teachers']));
+                $template = $template->render(array('teachers' => $teachers['teachers']));
+                echo $template;
             } catch (Exception $error) {
-                echo $error->getMessage();
+                $twig = Twig::loadTwig();
+                $template = $twig->load('inserirProfessor.html');
+
+                $message = $error->getMessage();
+                $template = $template->render(array('message' => $message));
+                echo $template;
             }
         }
         public function deleteData($teacherID){

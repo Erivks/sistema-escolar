@@ -129,3 +129,19 @@ footer {
   background-color: #00adb5;
   border-color: #70b7bb;
 }
+.error-buttons {
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+}
+.error-text {
+  margin: 25px 0;
+  text-align: center;
+}
+.error-h1 {
+  font-size: 20pt;
+}
+.error-h2 {
+  font-size: 17pt;
+  color: #eee;
+}

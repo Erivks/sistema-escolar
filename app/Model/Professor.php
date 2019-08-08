@@ -61,7 +61,7 @@
         
             $teacherName = $teacherDataset['name'];
 
-            $queryRequest = 'INSERT INTO Professor (nome_professor)
+            $queryRequest = 'INSERT INTO Professores (nome_professor)
                             VALUES
                             (:name)';
             $queryRequest = $conn->prepare($queryRequest);
