@@ -1,0 +1,88 @@
+<div class="modal fade" id="inserirProfessor" tabindex="-1" role="diálogo" aria-labelledby="Janela para inserir professor" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Inserir professor</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="?page=professor&method=insert" method="POST">
+                    <div class="form-group">
+                        <label class="col-form-label" for="nameInput">Nome:</label>
+                        <input type="text" class="form-control" id="nameInput">
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Editar">
+                    </input>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="btn btn-primary" type="button" data-id="{{teacher.id_professor}}" data-name="{{teacher.nome_professor}}" data-toggle="modal" data-target="#inserirProfessor">
+    Inserir
+</button>
+<table class="table table-striped table-hover table-dark">
+    <thead>
+        <tr>
+            <th scope="col">
+                ID
+            </th>
+            <th scope="col">
+                Nome
+            </th>
+            <th scope="col">
+                Editar
+            </th>
+            <th scope="col">
+                Deletar
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for teacher in teachers %}
+            <tr>
+                <th scope="row">
+                    {{teacher.id_professor}}
+                </th>
+                <td>
+                    {{teacher.nome_professor}}
+                </td>
+                <td>
+                    <button class="btn btn-primary" type="button" data-id="{{teacher.id_professor}}" data-name="{{teacher.nome_professor}}" data-toggle="modal" data-target="#editarProfessor">
+                        Editar
+                    </button>
+                </td>
+                <td>
+                    <a href="?page=professor&delete{{teacher.id_professor}}" class="btn btn-primary" role="button">
+                        Deletar
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="modal fade" id="editarProfessor" tabindex="-1" role="diálogo" aria-labelledby="Janela para editar professor" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Editar professor</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="?page=professor&method=alter" method="POST">
+                    <input class="form-control" type="text" hidden name="idInput" id="idInput">
+                    <div class="form-group">
+                        <label class="col-form-label" for="nameInput">Nome:</label>
+                        <input type="text" class="form-control" id="nameInput">
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Editar">
+                    </input>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,9 +7,11 @@
     require_once 'app/Controller/CursoController.php';
     require_once 'app/Controller/AlunoController.php';
     require_once 'app/Controller/MatriculaController.php';
+    require_once 'app/Controller/ProfessorController.php';
     require_once 'app/Model/Curso.php';
     require_once 'app/Model/Matricula.php';
     require_once 'app/Model/Aluno.php';
+    require_once 'app/Model/Professor.php';
     require_once 'vendor/autoload.php';
 
     $template = file_get_contents('app/Template/estrutura.html');
