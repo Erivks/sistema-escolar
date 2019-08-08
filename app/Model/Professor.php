@@ -24,7 +24,7 @@
 
             $conn = ConnectionToDB::getConnection();
 
-            $queryRequest = 'DELETE FROM Professor WHERE id_professor = :id';
+            $queryRequest = 'DELETE FROM Professores WHERE id_professor = :id';
             $queryRequest = $conn->prepare($queryRequest);
             $queryRequest->bindValue(':id', $teacherID, PDO::PARAM_INT);
             $queryResponse = $queryRequest->execute();
@@ -42,7 +42,7 @@
             $teacherID = $teacherDataset['id'];
             $teacherName = $teacherDataset['name'];
 
-            $queryRequest = 'UPDATE Professor SET nome_professor = :name 
+            $queryRequest = 'UPDATE Professores SET nome_professor = :name 
                             WHERE id_professor = :id';
             $queryRequest = $conn->prepare($queryRequest);
             $queryRequest->bindValue(':name', $teacherID, PDO::PARAM_STR);

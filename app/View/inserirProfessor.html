@@ -1,0 +1,31 @@
+<h1 class="error-text error-h1">{{ message }}</h1>
+<h2 class="error-text error-h2"> Deseja inserir um? </h2>
+<div class="error-buttons">
+    <button class="btn btn-primary error-inserir" type="button" data-id="{{teacher.id_professor}}" data-name="{{teacher.nome_professor}}" data-toggle="modal" data-target="#inserirProfessor">
+        Inserir
+    </button>
+    <a href="?page=professor" class="btn btn-primary error-recarregar" role="button">
+        Recarregar
+    </a>
+</div>
+<div class="modal fade" id="inserirProfessor" tabindex="-1" role="diálogo" aria-labelledby="Janela para inserir professor" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Inserir professor</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="?page=professor&method=insert" method="POST">
+                    <div class="form-group">
+                        <label class="col-form-label" for="nameInput">Nome:</label>
+                        <input type="text" class="form-control" id="nameInput" name="nameInput">
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Editar"></input>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
