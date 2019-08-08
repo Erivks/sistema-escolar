@@ -18,13 +18,12 @@ nav {
   background-color: #303841;
 }
 #bemVindo{
-  position: absolute;
+  margin: 10% auto;
   width: 100vw;      
   -moz-animation: slide 1s;
   -o-animation: slide 1s;
   -webkit-animation: slide 1s;
   animation: slide 2s; 
-  top: 40% !important;
 }
 @keyframes slide {
   0% {
