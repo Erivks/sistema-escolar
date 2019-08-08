@@ -55,6 +55,25 @@
 
             return $queryResponse;
         }
+        public static function insertTeacher($teacherDataset){
+
+            $conn = ConnectionToDB::getConnection();
+        
+            $teacherName = $teacherDataset['name'];
+
+            $queryRequest = 'INSERT INTO Professor (nome_professor)
+                            VALUES
+                            (:name)';
+            $queryRequest = $conn->prepare($queryRequest);
+            $queryRequest->bindValue(':name', $teacherName, PDO::PARAM_STR);
+            $queryResponse = $queryRequest->execute();
+
+            if(!$queryResponse){
+                throw new Exception("Não foi possível inserir o professor");
+            }
+
+            return $queryResponse;
+        }
     }
 
 ?>

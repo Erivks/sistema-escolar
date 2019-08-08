@@ -39,6 +39,20 @@
                 echo $error->getMessage();
             }
         }
+        public function insertData(){
+            try {
+                $teacherName = $_POST['nameInput'];
+
+                $teacherDataset = array(
+                    'name' => $teacherName
+                );
+
+                Professor::insertTeacher($teacherDataset);
+                header('location:?page=professor');
+            } catch (Exception $error) {
+                echo $error->getMessage();
+            }
+        }
     }
 
 ?>
