@@ -13,7 +13,8 @@
                     required: true
                 },
                 workloadInput: {
-                    required: true
+                    required: true,
+                    number: true
                 }
             },
             messages: {
@@ -21,7 +22,8 @@
                     required: "É preciso preencher o nome do curso"
                 },
                 workloadInput: {
-                    required: "É preciso preencher a carga horária"
+                    required: "É preciso preencher a carga horária",
+                    number: "Só são permitidos números"
                 }
             },
             errorPlacement: (error, element) => {
