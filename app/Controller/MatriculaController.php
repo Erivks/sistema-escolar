@@ -25,8 +25,23 @@
                     'alunos' => $alunos['alunos']
                 ));
                 
-            } catch (Exception $e) {
-                echo $e->getMessage();
+            } catch (Exception $error) {
+                $twig = Twig::loadTwig();
+                $template = $twig->load('inserirMatricula.html');
+
+                $storeAlunos = Aluno::getAll();
+                $storeCursos = Curso::getAll();
+
+                $alunos['alunos'] = $storeAlunos;
+                $cursos['cursos'] = $storeCursos;
+
+                $message = $error->getMessage();
+                $template = $template->render(array(
+                    'message' => $message,
+                    'students' => $alunos['alunos'],
+                    'courses' => $cursos['cursos']
+                ));
+                echo $template;
             }
         }
         public function deleteData($matriculaID){
