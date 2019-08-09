@@ -15,7 +15,12 @@
                 $content = $template->render(array('cursos' => $cursos['cursos']));    
                 echo $content;
             } catch (Exception $e) {
-                echo $e->getMessage();
+                $twig = Twig::loadTwig();
+                $template = $twig->load('inserirCurso.html');
+
+                $message = $error->getMessage();
+                $template = $template->render(array('message' => $message));
+                echo $template;
             }
         }
 
