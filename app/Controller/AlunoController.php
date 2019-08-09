@@ -18,7 +18,12 @@
                 echo $template->render(array('alunos' => $alunos['alunos']));
             
             } catch (Exception $error) {
-                echo $error->getMessage();
+                $twig = Twig::loadTwig();
+                $template = $twig->load('inserirAluno.html');
+
+                $message = $error->getMessage();
+                $template = $template->render(array('message' => $message));
+                echo $template;
             }
         }
         public function deleteData($alunoID){
