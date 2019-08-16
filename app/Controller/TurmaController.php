@@ -37,8 +37,10 @@
             try {
                 $className = $_POST['nameInput'];
                 $classTime = $_POST['shiftInput'];
+                $classID = $_POST['idInput'];
 
                 $classDataset = array(
+                    'id' => $classID,
                     'name' => $className,
                     'time' => $classTime
                 );

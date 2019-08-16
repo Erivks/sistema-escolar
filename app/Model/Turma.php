@@ -22,7 +22,7 @@
             $conn = ConnectionToDB::getConnection();
 
             $queryRequest = 'DELETE FROM Turmas WHERE id_turma = :id';
-            $queryRequest = $conn->prepare();
+            $queryRequest = $conn->prepare($queryRequest);
             $queryRequest->bindValue(':id', $classID, PDO::PARAM_INT);
             $queryResponse = $queryRequest->execute();
 
@@ -35,8 +35,8 @@
         public static function alterClass($classDataset){
             $conn = ConnectionToDB::getConnection();
 
-            $queryRequest = 'UPDATE Turmas SET nome_turma = :name, horario_turma WHERE id_truma = :id';
-            $queryRequest = $conn->prepare();
+            $queryRequest = 'UPDATE Turmas SET nome_turma = :name, horario_turma = :time WHERE id_turma = :id';
+            $queryRequest = $conn->prepare($queryRequest);
             $queryRequest->bindValue(':name', $classDataset['name'], PDO::PARAM_STR);
             $queryRequest->bindValue(':time', $classDataset['time'], PDO::PARAM_STR);
             $queryRequest->bindValue(':id', $classDataset['id'], PDO::PARAM_INT);
