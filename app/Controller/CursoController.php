@@ -14,7 +14,7 @@
 
                 $content = $template->render(array('cursos' => $cursos['cursos']));    
                 echo $content;
-            } catch (Exception $e) {
+            } catch (Exception $error) {
                 $twig = Twig::loadTwig();
                 $template = $twig->load('inserirCurso.html');
 
