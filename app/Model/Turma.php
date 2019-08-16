@@ -54,7 +54,7 @@
             $queryRequest = 'INSERT INTO Turmas (nome_turma, horario_turma)
                             VALUES
                             (:name, :time)';
-            $queryRequest = $conn->prepare();
+            $queryRequest = $conn->prepare($queryRequest);
             $queryRequest->bindValue(':name', $classDataset['name'], PDO::PARAM_STR);
             $queryRequest->bindValue(':time', $classDataset['time'], PDO::PARAM_STR);
             $queryResponse = $queryRequest->execute();

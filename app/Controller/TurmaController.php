@@ -12,7 +12,7 @@
                 $template = $twig->load('turmas.html');
 
                 echo $template->render(array(
-                    'turmas' => $turmas['turmas']
+                    'classes' => $turmas['turmas']
                 ));
             } catch (Exception $error) {
 
@@ -36,7 +36,7 @@
         public function alterData(){
             try {
                 $className = $_POST['nameInput'];
-                $classTime = $_POST['timeInput'];
+                $classTime = $_POST['shiftInput'];
 
                 $classDataset = array(
                     'name' => $className,
@@ -52,7 +52,7 @@
         public function insertData(){
             try {
                 $className = $_POST['nameInput'];
-                $classTime = $_POST['timeInput'];
+                $classTime = $_POST['shiftInput'];
 
                 $classDataset = array(
                     'name' => $className,
