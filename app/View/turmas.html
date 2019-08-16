@@ -1,0 +1,113 @@
+<div class="modal fade" id="inserirTurma" tabindex="-1" role="diálogo" aria-labelledby="Janela para inserir turma" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Inserir turma</h2>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="?page=turma&method=insert" method="POST">
+                    <input class="form-control" type="text" hidden name="idInput" id="idInput">
+                    <div class="form-group">
+                        <label class="col-form-label" for="nameInput">Nome:</label>
+                        <input class="form-control" type="text" name="nameInput" id="nameInput">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" for="shiftInput">Turno:</label>
+                        <select class="custom-select" name="shiftInput" id="shiftInput">
+                            <option value="Manhã">Manhã</option>
+                            <option value="Tarde">Tarde</option>
+                            <option value="Noite">Noite</option>
+                        </select>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Inserir">
+                    </input>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button type="button" class="btn btn-primary inserirBtn" data-toggle="modal" data-target="#inserirTurma">
+    Inserir turma
+</button>
+
+<table class="table table-dark table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">
+                ID
+            </th>
+            <th scope="col">
+                Nome
+            </th>
+            <th scope="col">
+                Turno
+            </th>
+            <th scope="col">
+                Editar
+            </th>
+            <th scope="col">
+                Deletar
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for class in classes %}
+            <tr>
+                <th scope="row">
+                    {{ class.id_turma }}
+                </th>
+                <td>
+                    {{ class.nome_turma }}
+                </td>
+                <td>
+                    {{ class.horario_turma }}
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarTurma" data-id="{{ class.id_turma }}" data-name="{{ class.nome_turma }}" data-shift="{{ class.horario_turma }}">
+                        Editar
+                    </button>
+                </td>
+                <td>
+                    <a href="?page=turma&delete={{ class.id_turma }}" class="btn btn-primary" role="button">
+                        Deletar
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="modal fade" id="editarTurma" tabindex="-1" role="diálogo" aria-labelledby="Janela para editar turma" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Edite a turma</h2>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="?page=turma&method=alter" method="POST">
+                    <input class="form-control" type="text" hidden name="idInput" id="idInput">
+                    <div class="form-group">
+                        <label class="col-form-label" for="nameInput">Nome:</label>
+                        <input class="form-control" type="text" name="nameInput" id="nameInput">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" for="shiftInput">Turno:</label>
+                        <select class="custom-select" name="shiftInput" id="shiftInput">
+                            <option value="Manhã">Manhã</option>
+                            <option value="Tarde">Tarde</option>
+                            <option value="Noite">Noite</option>
+                        </select>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Editar">
+                    </input>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
