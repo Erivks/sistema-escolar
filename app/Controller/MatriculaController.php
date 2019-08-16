@@ -6,8 +6,8 @@
                 
                 $storeMatriculas = Matricula::getAll();
                 $storeAlunos = Aluno::getAll();
-                $storeCursos = Curso::getAll();
-
+                $storeCursos = Curso::getAll();   
+                
                 $twig = Twig::loadTwig();
                 $template = $twig->load('matriculas.html');
 
@@ -28,20 +28,44 @@
             } catch (Exception $error) {
                 $twig = Twig::loadTwig();
                 $template = $twig->load('inserirMatricula.html');
+                
+                try {
+                    $storeAlunos = Aluno::getAll();
+                } catch (Exception $error) {
+                    $messageAluno = $error->getMessage();
+                }
+                try {
+                    $storeCursos = Curso::getAll();   
+                } catch (Exception $error) {
+                    $messageCurso = $error->getMessage();
+                }
 
-                $storeAlunos = Aluno::getAll();
-                $storeCursos = Curso::getAll();
+                if(!isset($storeAlunos)){
+                    $twig = Twig::loadTwig();
+                    $template = $twig->load('inserirAluno.html');
+                    $template = $template->render(array(
+                        'message' => $messageAluno
+                    ));
+                    echo $template;
+                }elseif(!isset($storeCursos)){
+                    $twig = Twig::loadTwig();
+                    $template = $twig->load('inserirCurso.html');
+                    $template = $template->render(array(
+                        'message' => $messageCurso
+                    ));
+                    echo $template;
+                }else{
+                    $alunos['alunos'] = $storeAlunos;
+                    $cursos['cursos'] = $storeCursos;
 
-                $alunos['alunos'] = $storeAlunos;
-                $cursos['cursos'] = $storeCursos;
-
-                $message = $error->getMessage();
-                $template = $template->render(array(
-                    'message' => $message,
-                    'students' => $alunos['alunos'],
-                    'courses' => $cursos['cursos']
-                ));
-                echo $template;
+                    $message = $error->getMessage();
+                    $template = $template->render(array(
+                        'message' => $message,
+                        'students' => $alunos['alunos'],
+                        'courses' => $cursos['cursos']
+                    ));
+                    echo $template;
+                }
             }
         }
         public function deleteData($matriculaID){
