@@ -36,3 +36,25 @@ $('#editarMatricula').on('show.bs.modal', function(event){
     modal.find('#studentNameInput').val(student).prop('selected', true);
     modal.find('#courseNameInput').val(course).prop('selected', true);
 });
+$('#editarProfessor').on('show.bs.modal', function(event){
+    var button = $(event.relatedTarget);
+    var id = button.data('id');
+    var teacher = button.data('name');
+
+    var modal = $(this);
+
+    modal.find('#idInput').val(id);
+    modal.find('#nameInput').val(teacher);
+});
+$('#editarTurma').on('show.bs.modal', function(event){
+    var button = $(event.relatedTarget);
+    var id = button.data('id');
+    var name = button.data('name');
+    var shift = button.data('shift');
+
+    var modal = $(this);
+
+    modal.find('#idInput').val(id);
+    modal.find('#nameInput').val(name);
+    modal.find('#shiftInput').val(shift).prop('selected', true);
+});
