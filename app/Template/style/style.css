@@ -80,6 +80,13 @@ th, td {
   color: #eee !important;
   text-align: right;
 }
+.login {
+  margin: 0 auto;
+  width: 35%;
+  border: 2px solid #303841;
+  border-radius: 10px;
+  padding: 10px 15px;
+}
 footer {
   position: relative;
   width: 100%;
