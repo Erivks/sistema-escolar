@@ -5,9 +5,18 @@
             try {
                 $twig = Twig::loadTwig();
                 $template = $twig->load('home.html');
-                echo $template->render();
-            } catch (Exception $e) {
-                echo $e;
+                session_start();
+                if(isset($_SESSION['userId']))
+                {
+                    echo $template->render(array(
+                        'session' => $_SESSION
+                    ));
+                } else 
+                {
+                    echo $template->render();
+                }
+            } catch (Exception $error) {
+                echo $error->getMessage();
             }
         }
     }
