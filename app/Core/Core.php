@@ -10,9 +10,6 @@
             if(!class_exists($page)){
                 $page = 'ErrorController';
             }
-            if(!isset($_SESSION)){
-                session_start();
-            }
             if(isset($getURL['method'])){
                 switch ($getURL['method'] ) {
                     case 'alter':
