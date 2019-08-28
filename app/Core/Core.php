@@ -10,7 +10,9 @@
             if(!class_exists($page)){
                 $page = 'ErrorController';
             }
-
+            if(!isset($_SESSION)){
+                session_start();
+            }
             if(isset($getURL['method'])){
                 switch ($getURL['method'] ) {
                     case 'alter':
@@ -21,8 +23,11 @@
                         $action = 'insertData';
                         call_user_func_array(array(new $page, $action), array());
                         break;
+                    case 'login':
+                        $action = 'login';
+                        call_user_func_array(array(new $page, $action), array());
+                        break;
                 }
-            
             } elseif(isset($getURL['delete'])){
             
                 $action = 'deleteData';
