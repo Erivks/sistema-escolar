@@ -11,11 +11,22 @@
                     'password' => $password
                 );
                 $user = User::getUser($userDataset);
-                $_SESSION['login'] = true;
-                $_SESSION['userId'] = $user->id;
+                session_start();
+                $_SESSION = array(
+                    'login' => true,
+                    'userId' => $user->id,
+                    'userName' => $user->user,
+                    'userPassword' => $user->pass
+                );
                 header('location:?page=home');
-            } catch (Exception $error) {
-                echo $error->getMessage();
+            } catch (Exception $error) 
+            {
+                $message = $error->getMessage();
+                $twig = Twig::loadTwig();
+                $template = $twig->load('home.html');
+                echo $template->render(array(
+                    'error' => $message
+                ));
             }
         }
     }
