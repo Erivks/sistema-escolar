@@ -12,8 +12,17 @@
                 $cursos = array();
                 $cursos['cursos'] = $storeCursos;
 
-                $content = $template->render(array('cursos' => $cursos['cursos']));    
-                echo $content;
+                if(isset($_SESSION))
+                {
+                    echo $template->render(array(
+                        'cursos' => $cursos['cursos'],
+                        'session' => $_SESSION
+                    )); 
+                } else 
+                {
+                   echo $template->render(); 
+                }
+                
             } catch (Exception $error) {
                 $twig = Twig::loadTwig();
                 $template = $twig->load('inserirCurso.html');
