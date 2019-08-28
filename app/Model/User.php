@@ -1,23 +1,23 @@
 <?php
-
     class User 
     {
         public static function getUser($userDataset)
         {
             $conn = ConnectionToDB::getConnection();
-            
-            $queryRequest = "SELECT * FROM usuarios WHERE user = :user, password = :password";
+            $queryRequest = 'SELECT * FROM usuarios WHERE user = :user AND pass = :pass';
             $queryRequest = $conn->prepare($queryRequest);
-            $queryRequest->bindValue(':user', $userDataset['userInput'], PDO::PARAM_STR);
-            $queryRequest->bindValue(':password', $userDataset['passwordInput'], PDO::PARAM_STR);
+            $queryRequest->bindValue(':user', $userDataset['user'], PDO::PARAM_STR);
+            $queryRequest->bindValue(':pass', $userDataset['password'], PDO::PARAM_STR);
+            $queryRequest->execute();
+            $queryResponse = $queryRequest->fetchObject('User');
             
-            $queryResponse = $queryRequest->execute();
-
-            if($queryResponse->rowCount() == 1){
-                return $queryResponse;
-            } else {
+            if(!$queryResponse)
+            {
                 throw new Exception("Usuário e/ou senha incorretos.");
+            } else 
+            {
+                return $queryResponse;
             }
-        }    
+        }
     }
 ?>

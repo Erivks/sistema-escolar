@@ -1,22 +1,21 @@
 <?php
     class UserController 
     {
-        public function index()
+        public function login()
         {
-            try 
-            {
+            try {
                 $user = $_POST['userInput'];
                 $password = $_POST['passwordInput'];
                 $userDataset = array(
                     'user' => $user,
                     'password' => $password
                 );
-                User::getUser($userDataset);
+                $user = User::getUser($userDataset);
                 $_SESSION['login'] = true;
-                header('?page=curso');
-            } catch (Exception $error) 
-            {   
-                $error->getMessage();
+                $_SESSION['userId'] = $user->id;
+                header('location:?page=home');
+            } catch (Exception $error) {
+                echo $error->getMessage();
             }
         }
     }
