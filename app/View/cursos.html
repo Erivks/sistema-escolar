@@ -1,100 +1,138 @@
-<div class="modal fade" id="inserirCurso" tabindex="-1" role="diálogo" aria-labelledby="Janela para editar curso" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Inserir curso</h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="?page=curso&method=insert" method="POST">
-                    <div class="form-group">
-                        <label class="col-form-label" for="nameInput">Nome:</label>
-                        <input class="form-control" type="text" name="nameInput" id="nameInput">
-                    </div>
-                    <div class="form-group">
-                        <label class="col-form-label" for="workloadInput">Carga Horária</label>
-                        <input class="form-control" type="text" name="workloadInput" id="workloadInput">
-                    </div>
-                    <input type="submit" class="btn btn-primary" value="Inserir"></input>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<button class="btn btn-primary inserirBtn" type="button" data-target="#inserirCurso" data-toggle="modal">
-    Inserir novo curso
-</button>
-<table class="table table-hover table-striped table-dark">
-    <thead>
-        <tr>
-            <th scope="col">
-                ID
-            </th>
-            <th scope="col">
-                Nome do Curso
-            </th>
-            <th scope="col">
-                Carga Horária
-            </th>
-            <th scope="col">
-                Editar
-            </th>
-            <th scope="col">
-                Deletar
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for curso in cursos %}
-            <tr>
-                <th scope="row">
-                    {{curso.id_curso}}
-                </th>
-                <td>
-                    {{curso.nome_curso}}
-                </td>
-                <td>
-                    {{curso.carga_horaria}}
-                </td>
-                <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarCurso" data-id="{{curso.id_curso}}" data-name="{{curso.nome_curso}}" data-workload="{{curso.carga_horaria}}">
-                        Editar
+{% if not message %}
+    <div class="modal fade" id="inserirCurso" tabindex="-1" role="diálogo" aria-labelledby="Janela para editar curso" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Inserir curso</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
                     </button>
-                </td>
-                <td>
-                    <a href="?page=curso&delete={{curso.id_curso}}" class="btn btn-primary" role="button"> 
-                        Deletar
-                    </a>
-                </td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
-<div class="modal fade" id="editarCurso" tabindex="-1" role="diálogo" aria-labelledby="Janela para editar curso" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Edita curso</h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="?page=curso&method=alter" method="POST">
-                    <input class="form-control" type="text" hidden name="idInput" id="idInput">
-                    <div class="form-group">
-                        <label class="col-form-label" for="nameInput">Nome:</label>
-                        <input class="form-control" type="text" name="nameInput" id="nameInput">
-                    </div>
-                    <div class="form-group">
-                        <label class="col-form-label" for="workloadInput">Carga Horária</label>
-                        <input class="form-control" type="text" name="workloadInput" id="workloadInput">
-                    </div>
-                    <input type="submit" class="btn btn-primary" value="Editar"></input>
-                </form>
+                </div>
+                <div class="modal-body">
+                    <form action="?page=curso&method=insert" method="POST">
+                        <div class="form-group">
+                            <label class="col-form-label" for="nameInput">Nome:</label>
+                            <input class="form-control" type="text" name="nameInput" id="nameInput">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label" for="workloadInput">Carga Horária</label>
+                            <input class="form-control" type="text" name="workloadInput" id="workloadInput">
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Inserir"></input>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <button class="btn btn-primary inserirBtn" type="button" data-target="#inserirCurso" data-toggle="modal">
+        Inserir novo curso
+    </button>
+    <table class="table table-hover table-striped table-dark">
+        <thead>
+            <tr>
+                <th scope="col">
+                    ID
+                </th>
+                <th scope="col">
+                    Nome do Curso
+                </th>
+                <th scope="col">
+                    Carga Horária
+                </th>
+                <th scope="col">
+                    Editar
+                </th>
+                <th scope="col">
+                    Deletar
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for curso in cursos %}
+                <tr>
+                    <th scope="row">
+                        {{curso.id_curso}}
+                    </th>
+                    <td>
+                        {{curso.nome_curso}}
+                    </td>
+                    <td>
+                        {{curso.carga_horaria}}
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarCurso" data-id="{{curso.id_curso}}" data-name="{{curso.nome_curso}}" data-workload="{{curso.carga_horaria}}">
+                            Editar
+                        </button>
+                    </td>
+                    <td>
+                        <a href="?page=curso&delete={{curso.id_curso}}" class="btn btn-primary" role="button"> 
+                            Deletar
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="modal fade" id="editarCurso" tabindex="-1" role="diálogo" aria-labelledby="Janela para editar curso" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Edita curso</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="?page=curso&method=alter" method="POST">
+                        <input class="form-control" type="text" hidden name="idInput" id="idInput">
+                        <div class="form-group">
+                            <label class="col-form-label" for="nameInput">Nome:</label>
+                            <input class="form-control" type="text" name="nameInput" id="nameInput">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label" for="workloadInput">Carga Horária</label>
+                            <input class="form-control" type="text" name="workloadInput" id="workloadInput">
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Editar"></input>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <h1 class="error-text error-h1">{{ message }}</h1>
+    <h2 class="error-text error-h2"> Deseja inserir um? </h2>
+    <div class="error-buttons">
+        <button class="btn btn-primary error-inserir" type="button" data-toggle="modal" data-target="#inserirCurso">
+            Inserir
+        </button>
+        <a href="?page=curso" class="btn btn-primary error-recarregar" role="button">
+            Recarregar
+        </a>
+    </div>
+    <div class="modal fade" id="inserirCurso" tabindex="-1" role="diálogo" aria-labelledby="Janela para inserir curso" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Inserir curso</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="?page=curso&method=insert" method="POST">
+                        <div class="form-group">
+                            <label class="col-form-label" for="nameInput">Nome:</label>
+                            <input type="text" class="form-control" id="nameInput" name="nameInput">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label" for="birthdayInput">Carga horária:</label>
+                            <input type="text" class="form-control date" id="workloadInput" name="workloadInput">
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Editar"></input>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
