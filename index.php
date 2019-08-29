@@ -18,15 +18,24 @@
     require_once 'app/Model/User.php';
     require_once 'vendor/autoload.php';
 
-    $template = file_get_contents('app/Template/estrutura.html');
-
     ob_start();
         $core = new Core();
         $core->start($_GET);
         $return = ob_get_contents();
     ob_end_clean();
 
-    $readyTemplate = str_replace('{{área}}', $return, $template);
-
-    echo $readyTemplate;
+    if(isset($_SESSION))
+    {
+        $twig = Twig::loadTemplate();
+        $template = $twig->load('estrutura.html');
+        echo $template->render(array(
+            'session' => $_SESSION,
+            'área' => $return
+        ));
+    } else 
+    {
+        echo $template->render(array(
+            'área' => $return
+        ));
+    }
 ?>
