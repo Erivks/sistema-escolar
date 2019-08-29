@@ -11,18 +11,32 @@
                 $twig = Twig::loadTwig();
                 $template = $twig->load('turmas.html');
 
-                echo $template->render(array(
-                    'classes' => $turmas['turmas']
-                ));
+                if(isset($_SESSION['userId']))
+                {
+                    echo $template->render(array(
+                        'classes' => $turmas['turmas']
+                    ));
+                } else 
+                {
+                    ErrorController::errorLogin();
+                }
+                
             } catch (Exception $error) {
 
                 $twig = Twig::loadTwig();
                 $template = $twig->load('inserirTurma.html');
 
                 $message = $error->getMessage();
-                echo $template->render(array(
-                    'message' => $message
-                ));
+
+                if(isset($_SESSION['userId']))
+                {
+                    echo $template->render(array(
+                        'message' => $message
+                    ));
+                } else 
+                {
+                    ErrorController::errorLogin();
+                }
             }
         }
         public function deleteData($classID){

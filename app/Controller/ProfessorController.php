@@ -7,18 +7,39 @@
                 $twig = Twig::loadTwig();
                 $template = $twig->load('professores.html');
                 
-                $teachers = array();
-                $teachers['teachers'] = $storeTeacher;
+                $teachers = array(
+                    'teachers' => $storeTeacher
+                );
+                
+                if(isset($_SESSION['userId']))
+                {
+                
+                    echo $template->render(array(
+                        'teachers' => $teachers['teachers']
+                    ));
+                
+                } else 
+                {
+                
+                    ErrorController::errorLogin();
+                
+                }
 
-                $template = $template->render(array('teachers' => $teachers['teachers']));
-                echo $template;
             } catch (Exception $error) {
                 $twig = Twig::loadTwig();
-                $template = $twig->load('inserirProfessor.html');
+                $template = $twig->load('professores.html');
 
                 $message = $error->getMessage();
-                $template = $template->render(array('message' => $message));
-                echo $template;
+                
+                if(isset($_SESSION['userId']))
+                {
+                    echo $template->render(array(
+                        'message' => $message
+                    ));
+                } else 
+                {
+                    ErrorController::errorLogin();
+                }
             }
         }
         public function deleteData($teacherID){
