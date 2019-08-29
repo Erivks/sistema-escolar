@@ -5,7 +5,6 @@
             try {
                 $twig = Twig::loadTwig();
                 $template = $twig->load('home.html');
-                session_start();
                 if(isset($_SESSION['userId']))
                 {
                     echo $template->render(array(
