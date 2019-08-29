@@ -11,7 +11,6 @@
                     'password' => $password
                 );
                 $user = User::getUser($userDataset);
-                session_start();
                 $_SESSION = array(
                     'login' => true,
                     'userId' => $user->id,
@@ -27,6 +26,17 @@
                 echo $template->render(array(
                     'error' => $message
                 ));
+            }
+        }
+        public function logout()
+        {
+            if(isset($_SESSION['userId']))
+            {
+                session_destroy();
+                header('location:?page=home');
+            } else 
+            {
+                echo 'Não logado';
             }
         }
     }
