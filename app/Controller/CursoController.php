@@ -12,24 +12,30 @@
                 $cursos = array();
                 $cursos['cursos'] = $storeCursos;
 
-                if(isset($_SESSION))
+                if(isset($_SESSION['userId']))
                 {
                     echo $template->render(array(
                         'cursos' => $cursos['cursos'],
-                        'session' => $_SESSION
                     )); 
                 } else 
                 {
-                   echo $template->render(); 
+                   ErrorController::errorLogin();
                 }
                 
             } catch (Exception $error) {
                 $twig = Twig::loadTwig();
-                $template = $twig->load('inserirCurso.html');
+                $template = $twig->load('cursos.html');
 
                 $message = $error->getMessage();
-                $template = $template->render(array('message' => $message));
-                echo $template;
+                if(isset($_SESSION['userId']))
+                {
+                    echo $template->render(array(
+                        'message' => $message
+                    ));
+                } else
+                {
+                    ErrorController::errorLogin();
+                }
             }
         }
 

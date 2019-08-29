@@ -19,53 +19,85 @@
                 $cursos['cursos'] = $storeCursos;
                 $alunos['alunos'] = $storeAlunos;
 
-                echo $template->render(array(
-                    'matriculas' => $matriculas['matriculas'],
-                    'cursos' => $cursos['cursos'],
-                    'alunos' => $alunos['alunos']
-                ));
+                if(isset($_SESSION['userId']))
+                {
+                    echo $template->render(array(
+                        'matriculas' => $matriculas['matriculas'],
+                        'cursos' => $cursos['cursos'],
+                        'alunos' => $alunos['alunos']
+                    ));
+                } else 
+                {
+                    ErrorController::errorLogin();
+                }
                 
             } catch (Exception $error) {
-                $twig = Twig::loadTwig();
-                $template = $twig->load('inserirMatricula.html');
                 
-                try {
-                    $storeAlunos = Aluno::getAll();
-                } catch (Exception $error) {
-                    $messageAluno = $error->getMessage();
-                }
-                try {
-                    $storeCursos = Curso::getAll();   
-                } catch (Exception $error) {
-                    $messageCurso = $error->getMessage();
-                }
-
-                if(!isset($storeAlunos)){
+                if(isset($_SESSION['userId']))
+                {
+                    
                     $twig = Twig::loadTwig();
-                    $template = $twig->load('inserirAluno.html');
-                    $template = $template->render(array(
-                        'message' => $messageAluno
-                    ));
-                    echo $template;
-                }elseif(!isset($storeCursos)){
-                    $twig = Twig::loadTwig();
-                    $template = $twig->load('inserirCurso.html');
-                    $template = $template->render(array(
-                        'message' => $messageCurso
-                    ));
-                    echo $template;
-                }else{
-                    $alunos['alunos'] = $storeAlunos;
-                    $cursos['cursos'] = $storeCursos;
+                    $template = $twig->load('matriculas.html');
+                    
+                    try 
+                    {
+                        $storeAlunos = Aluno::getAll();
+                    } catch (Exception $error) 
+                    {
+                        $messageAluno = $error->getMessage();
+                    }
 
-                    $message = $error->getMessage();
-                    $template = $template->render(array(
-                        'message' => $message,
-                        'students' => $alunos['alunos'],
-                        'courses' => $cursos['cursos']
-                    ));
-                    echo $template;
+                    try 
+                    {
+                        $storeCursos = Curso::getAll();   
+                    } catch (Exception $error) 
+                    {
+                        $messageCurso = $error->getMessage();
+                    }
+
+                    if(!isset($storeAlunos))
+                    {
+                    
+                        $twig = Twig::loadTwig();
+                        $template = $twig->load('matriculas.html');
+                        $template = $template->render(array(
+                            'messageAluno' => $messageAluno,
+                            'erro' => true
+                        ));
+                        echo $template;
+                    
+                    } elseif(!isset($storeCursos))
+                    {
+                    
+                        $twig = Twig::loadTwig();
+                        $template = $twig->load('matriculas.html');
+                        $template = $template->render(array(
+                            'messageCurso' => $messageCurso,
+                            'erro' => true
+                        ));
+                        echo $template;
+                    
+                    } else 
+                    {
+                        
+                        $alunos['alunos'] = $storeAlunos;
+                        $cursos['cursos'] = $storeCursos;
+
+                        $message = $error->getMessage();
+                        $template = $template->render(array(
+                            'message' => $message,
+                            'students' => $alunos['alunos'],
+                            'courses' => $cursos['cursos'],
+                            'erro' => true
+                        ));
+                        echo $template;
+                    
+                    }
+                } else 
+                {
+                    ErrorController::errorLogin();
                 }
+                
             }
         }
         public function deleteData($matriculaID){

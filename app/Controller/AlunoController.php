@@ -15,25 +15,31 @@
                 $alunos['alunos'] = $storeAlunos;
 
                 //Renderizando template
-                if(isset($_SESSION))
-                {
+                if(isset($_SESSION['userId']))
+                {   
                     echo $template->render(array(
                         'alunos' => $alunos['alunos'],
                         'session' => $_SESSION
                     ));
                 } else 
                 {
-                    echo $template->render();
+                    ErrorController::errorLogin();
                 }
             
             } catch (Exception $error) {
                 $twig = Twig::loadTwig();
-                $template = $twig->load('inserirAluno.html');
+                $template = $twig->load('alunos.html');
 
                 $message = $error->getMessage();
-                echo $template->render(array(
-                    'message' => $message
-                ));
+                if(isset($_SESSION['userId']))
+                {
+                    echo $template->render(array(
+                        'message' => $message,
+                    ));
+                } else 
+                {
+                    ErrorController::errorLogin();
+                }
             }
         }
         public function deleteData($alunoID){
