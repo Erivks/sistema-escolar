@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Prompt:400,600&display=swap');
+html {
+  zoom: 80%;
+}
 body {
   background-color: #3a4750 !important;
   overflow-x: hidden;
