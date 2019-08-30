@@ -17,13 +17,13 @@
                 );
 
                 //Renderizando template
-                if (UserController::verifiyLogin()) {   
+                if (UserController::verifyLogin()) {   
                     echo $template->render(array(
                         'alunos' => $alunos['alunos'],
                     ));
                 }
             } catch (Exception $error) {
-                if (UserController::verifiyLogin()) {
+                if (UserController::verifyLogin()) {
                     $twig = Twig::loadTwig();
                     $template = $twig->load('alunos.html');
                     $message = $error->getMessage();
