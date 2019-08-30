@@ -39,6 +39,14 @@
                 echo 'Não logado';
             }
         }
+        public static function verifyLogin()
+        {
+            if (isset($_SESSION['userId'])) {
+                return $_SESSION;
+            } else {
+                ErrorController::errorLogin();
+            }
+        }
     }
 
 ?>
