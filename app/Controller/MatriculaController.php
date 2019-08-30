@@ -1,73 +1,67 @@
 <?php
 
-    class MatriculaController {
-        public function index(){
+    class MatriculaController 
+    {
+        public function index()
+        {
             try {
-                
-                $storeMatriculas = Matricula::getAll();
-                $storeAlunos = Aluno::getAll();
-                $storeCursos = Curso::getAll();   
-                
-                $twig = Twig::loadTwig();
-                $template = $twig->load('matriculas.html');
+                if (UserController::verifyLogin()) {
 
-                $matriculas = array();
-                $cursos = array();
-                $alunos = array();
-
-                $matriculas['matriculas'] = $storeMatriculas;
-                $cursos['cursos'] = $storeCursos;
-                $alunos['alunos'] = $storeAlunos;
-
-                if(isset($_SESSION['userId']))
-                {
+                    $storeMatriculas = Matricula::getAll();
+                    $storeAlunos = Aluno::getAll();
+                    $storeCursos = Curso::getAll();   
+                    
+                    $twig = Twig::loadTwig();
+                    $template = $twig->load('matriculas.html');
+                    
+                    $matriculas = array(
+                        'matriculas' => $storeMatriculas
+                    );
+                    
+                    $cursos = array(
+                        'cursos' => $storeCursos
+                    );
+                    
+                    $alunos = array(
+                        'alunos' => $storeAlunos
+                    );
+                    
                     echo $template->render(array(
                         'matriculas' => $matriculas['matriculas'],
                         'cursos' => $cursos['cursos'],
                         'alunos' => $alunos['alunos']
                     ));
-                } else 
-                {
-                    ErrorController::errorLogin();
-                }
-                
+                }      
             } catch (Exception $error) {
-                
-                if(isset($_SESSION['userId']))
-                {
+                if (UserController::verifyLogin()) {
                     
                     $twig = Twig::loadTwig();
                     $template = $twig->load('matriculas.html');
                     
-                    try 
-                    {
+                    try {
                         $storeAlunos = Aluno::getAll();
-                    } catch (Exception $error) 
-                    {
+                    } catch (Exception $error) {
                         $messageAluno = $error->getMessage();
                     }
 
-                    try 
-                    {
+                    try {
                         $storeCursos = Curso::getAll();   
-                    } catch (Exception $error) 
-                    {
+                    } catch (Exception $error) {
                         $messageCurso = $error->getMessage();
                     }
 
-                    if(!isset($storeAlunos))
-                    {
+                    if (!isset($storeAlunos)) {
                     
                         $twig = Twig::loadTwig();
                         $template = $twig->load('matriculas.html');
+                    
                         $template = $template->render(array(
                             'messageAluno' => $messageAluno,
                             'erro' => true
                         ));
                         echo $template;
                     
-                    } elseif(!isset($storeCursos))
-                    {
+                    } elseif (!isset($storeCursos)) {
                     
                         $twig = Twig::loadTwig();
                         $template = $twig->load('matriculas.html');
@@ -77,8 +71,7 @@
                         ));
                         echo $template;
                     
-                    } else 
-                    {
+                    } else {
                         
                         $alunos['alunos'] = $storeAlunos;
                         $cursos['cursos'] = $storeCursos;
@@ -91,56 +84,59 @@
                             'erro' => true
                         ));
                         echo $template;
-                    
                     }
-                } else 
-                {
-                    ErrorController::errorLogin();
                 }
-                
             }
         }
-        public function deleteData($matriculaID){
+        public function deleteData($matriculaID)
+        {
             try {
-                Matricula::deleteByID($matriculaID);
-                $this->index();
+                if (UserController::verifyLogin()) {
+                    Matricula::deleteByID($matriculaID);
+                    $this->index();
+                }
             } catch (Exception $error) {
                 echo $error->getMessage();
             }
         }
-        public function alterData(){
+        public function alterData()
+        {
             try {
-                $registrationID = $_POST['idInput'];
-                $studentID = $_POST['studentNameInput'];
-                $courseID = $_POST['courseNameInput'];
+                if (UserController::verifyLogin()) {
+                    $registrationID = $_POST['idInput'];
+                    $studentID = $_POST['studentNameInput'];
+                    $courseID = $_POST['courseNameInput'];
 
-                $registrationDataset = array(
-                    'registrationID' => $registrationID,
-                    'studentID' => $studentID,
-                    'courseID' => $courseID
-                );
+                    $registrationDataset = array(
+                        'registrationID' => $registrationID,
+                        'studentID' => $studentID,
+                        'courseID' => $courseID
+                    );
 
-                $queryStudent = Matricula::alterData($registrationDataset);
-                header('location:?page=matricula');
+                    Matricula::alterData($registrationDataset);
+                    header('location:?page=matricula');
+                }
             } catch (Exception $error) {
                 echo $error->getMessage();
             }
         }
-        public function insertData(){
+        public function insertData()
+        {
             try {
-                $studentID = $_POST['studentNameInput'];
-                $courseID = $_POST['courseNameInput'];
+                if (UserController::verifyLogin()) {
+                    $studentID = $_POST['studentNameInput'];
+                    $courseID = $_POST['courseNameInput'];
 
-                $registrationDataset = array(
-                    'studentID' => $studentID,
-                    'courseID' => $courseID
-                );
+                    $registrationDataset = array(
+                        'studentID' => $studentID,
+                        'courseID' => $courseID
+                    );
 
-                $queryStudent = Matricula::insertData($registrationDataset);
-                header('location:?page=matricula');
+                    Matricula::insertData($registrationDataset);
+                    header('location:?page=matricula');
+                }
             } catch (Exception $error) {
                 echo $error->getMessage();
             }
         }
     }
-?>
