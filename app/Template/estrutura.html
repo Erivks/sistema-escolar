@@ -55,13 +55,13 @@
                   Matriculas
                 </a>
               </li>
-              <li class="nav-item">
-                {% if session %}
-                  <a href="?page=user&method=logout" class="nav-link btn btn-primary" role="button">
-                    Sair
-                  </a>
-                {% endif %}
-              </li>
+              {% if session %}
+                <li class="nav-item">
+                    <a href="?page=user&method=logout" class="nav-link btn btn-primary" role="button">
+                      Sair
+                    </a>
+                </li>
+              {% endif %}
             </ul>
         </div>
     </nav>
