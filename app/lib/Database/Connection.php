@@ -1,7 +1,6 @@
 <?php
 
 namespace App\lib;
-
 use PDO;
 
 abstract class ConnectionToDB 

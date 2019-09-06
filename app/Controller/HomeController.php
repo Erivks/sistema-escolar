@@ -1,5 +1,9 @@
 <?php
-    
+
+namespace App\Controller;
+
+use App\lib\Twig;
+
 class HomeController 
 {
     public function index()

@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Model;
+
+use App\lib\ConnectionToDB;
+use PDO;
+
 class User 
 {
     public static function getUser($userDataset)

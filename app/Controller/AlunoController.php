@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Controller;
+
+use App\lib\ConnectionToDB;
+use App\lib\Twig;
+
 class AlunoController
 {
     public function index()

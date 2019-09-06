@@ -1,10 +1,12 @@
 <?php
 
+namespace App\Controller;
+
 class ErrorController 
 {
     public function index() 
     {
-        echo 'Erro';
+        echo 'Erro, essa página existe';
     }
     public static function errorLogin()
     {

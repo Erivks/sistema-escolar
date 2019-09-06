@@ -1,5 +1,11 @@
 <?php
 
+namespace App\Controller;
+
+use App\lib\ConnectionToDB;
+use App\lib\Twig;
+use App\Model\User;
+
 class UserController 
 {
     public function login()

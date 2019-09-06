@@ -9,5 +9,18 @@
     "description": "Projeto crud e mvc para estudo do php",
     "require": {
         "twig/twig": "^2.11"
+    }, 
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "classmap": [
+            "app/Controller",
+            "app/Model",
+            "app/lib",
+            "app/lib/Database",
+            "app/lib/Twig",
+            "app/Core"
+        ]
     }
 }
