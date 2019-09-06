@@ -1,5 +1,9 @@
 <?php
 
+namespace Project\Controller;
+
+use Project\Controller\UserController as User;
+
     class AlunoController {
         public function index()
         {
@@ -17,13 +21,13 @@
                 );
 
                 //Renderizando template
-                if (UserController::verifyLogin()) {   
+                if (User::verifyLogin()) {   
                     echo $template->render(array(
                         'alunos' => $alunos['alunos'],
                     ));
                 }
             } catch (Exception $error) {
-                if (UserController::verifyLogin()) {
+                if (User::verifyLogin()) {
                     $twig = Twig::loadTwig();
                     $template = $twig->load('alunos.html');
                     $message = $error->getMessage();
@@ -36,7 +40,7 @@
         public function deleteData($alunoID)
         {
             try {
-                if (UserController::verifyLogin()) {
+                if (User::verifyLogin()) {
                     Aluno::deleteByID($alunoID);
                     header('location:?page=aluno');
                 }
@@ -47,7 +51,7 @@
         public function alterData()
         {
             try {
-                if (UserController::verifyLogin()) {
+                if (User::verifyLogin()) {
                     $studentID = $_POST['idInput'];
                     $studentName = $_POST['nameInput'];
                     $studentBirthday = $_POST['birthdayInput'];
@@ -66,7 +70,7 @@
         public function insertData()
         {
             try {                
-                if (UserController::verifyLogin()) {
+                if (User::verifyLogin()) {
                     $studentName = $_POST['nameInput'];
                     $studentBirthday = $_POST['birthdayInput'];
                     $studentBirthday = DateTime::createFromFormat('d/m/Y', $studentBirthday);

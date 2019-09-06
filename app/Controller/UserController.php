@@ -1,4 +1,7 @@
 <?php
+
+namespace Project\Controller;
+
     class UserController 
     {
         public function login()
