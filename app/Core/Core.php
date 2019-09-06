@@ -15,20 +15,14 @@
             
             }
 
-            if(!class_exists($page))
-            {
-            
+            if (!class_exists($page)) {
                 $page = 'ErrorController';
-            
             }
-            if(!isset($_SESSION))
-            {
+            if (!isset($_SESSION)) {
                 session_start();
             }
-            if(isset($getURL['method']))
-            {
-                switch ($getURL['method'] ) 
-                {
+            if (isset($getURL['method'])) {
+                switch ($getURL['method'] ) {
                     case 'alter':
                         $action = 'alterData';
                         call_user_func_array(array(new $page, $action), array());        
@@ -46,15 +40,13 @@
                         call_user_func_array(array(new $page, $action), array());
                         break;
                 }
-            } elseif(isset($getURL['delete']))
-            {
+            } elseif(isset($getURL['delete'])) {
             
                 $action = 'deleteData';
                 $id = $getURL['delete'];
                 call_user_func_array(array(new $page, $action), array('ID' => $id));
             
-            } else 
-            {
+            } else {
             
                 $action = 'index';
                 call_user_func_array(array(new $page, $action), array());
@@ -62,4 +54,3 @@
             }
         }
     }
-?>
